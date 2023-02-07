@@ -1,0 +1,27 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="StaticImport" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="allowedClasses">
+        <set>
+          <option value="com.auth0.jwt.algorithms.Algorithm" />
+          <option value="com.supportportal.constant.Authority" />
+          <option value="com.supportportal.constant.EmailConstant" />
+          <option value="com.supportportal.constant.FileConstant" />
+          <option value="com.supportportal.constant.SecurityConstant" />
+          <option value="com.supportportal.constant.UserImplConstant" />
+          <option value="com.supportportal.enumeration.Role" />
+          <option value="java.nio.file.StandardCopyOption" />
+          <option value="java.util.Arrays" />
+          <option value="java.util.concurrent.TimeUnit" />
+          <option value="javax.mail.Message.RecipientType" />
+          <option value="org.apache.commons.lang3.StringUtils" />
+          <option value="org.springframework.http.HttpHeaders" />
+          <option value="org.springframework.http.HttpStatus" />
+          <option value="org.springframework.http.MediaType" />
+          <option value="org.springframework.security.config.http.SessionCreationPolicy" />
+        </set>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

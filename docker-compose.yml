@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  app:
+    image: backendapp
+    depends_on:
+      - mysqldb
+    build: .
+    restart: always
+    ports:
+      - 5000:5000
+    networks:
+      - spring-network
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/pfeDataBase
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD:
+
+
+  mysqldb:
+    image: mysql:5.7
+    restart: always
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=pfeDataBase
+    networks:
+      - spring-network
+    ports:
+      - 3306:3306
+
+
+networks:
+  spring-network:
+    name: spring-network
+

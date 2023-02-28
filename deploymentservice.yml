@@ -1,0 +1,40 @@
+
+   
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backendapp-deployment
+  labels:
+    app: backendapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backendapp
+  template:
+    metadata:
+      labels:
+        app: backendapp 
+    spec:
+      containers:
+      - name: nodeserver
+        image: aminechourou/backendapp:latest
+        ports:
+        - containerPort: 5000
+        
+        
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: backendapp-service
+spec:
+  selector:
+    app: backendapp 
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+    nodePort: 31110

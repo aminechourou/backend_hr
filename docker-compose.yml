@@ -1,7 +1,8 @@
 version: '3.7'
 services:
   app:
-    image: backendapp
+    image: aminechourou/backendapp
+    containername: backendapp
     depends_on:
       - mysqldb
     build: .

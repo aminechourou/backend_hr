@@ -22,7 +22,7 @@ services:
     restart: always
     environment:
       - MYSQL_DATABASE=pfeDataBase
-      -MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
     networks:
       - spring-network
     ports:

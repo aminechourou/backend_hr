@@ -10,7 +10,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://172.16.171.74:3306/pfeDataBase #change this to your database url
+    url: jdbc:mysql://mysqldb:3306/pfeDataBase #change this to your database url
     password: root
     username: root #change this to your database password
   jpa:

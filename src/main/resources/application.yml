@@ -1,12 +1,6 @@
 jwt:
   secret: '[a-zA-Z0-9._]^+$Guidelines89797987forAlphabeticalArraNumeralsandOtherSymbo$'
 
-
-#server:
-#  port: 5000
-#  error:
-#    whitelabel:
-#      enabled: false
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -21,7 +15,3 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-  mvc:
-    throw-exception-if-no-handler-found: true
-  resources:
-    add-mappings: false

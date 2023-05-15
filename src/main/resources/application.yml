@@ -1,17 +1,30 @@
 jwt:
   secret: '[a-zA-Z0-9._]^+$Guidelines89797987forAlphabeticalArraNumeralsandOtherSymbo$'
 
+
+server:
+  port: 5000
+#  error:
+#    whitelabel:
+#      enabled: false
+
 spring:
   datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://${DB_HOST:mysqldbgestcomp}:${MYSQL_PORT:3306}/${DB_NAME:pfeDataBase}?createDatabaseIfNotExist=true&useSSL=false&useJDBCCompliantTimezoneShift=true&serverTimezone=UTC} 
+    password: ${DB_PASSWORD:root}
+    username: ${DB_USERNAME:root} #change this to your database password
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/pfeDataBase
-    username: root
-    password: root
-    hikari:
-      initialization-fail-timeout: 0
   jpa:
-    database-platform: org.hibernate.dialect.MySQL5Dialect
-    generate-ddl: true
     show-sql: true
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+    
+    
+   

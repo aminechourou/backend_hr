@@ -76,6 +76,14 @@ public class Mission {
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
+
+	public Mission(Long id, String realisation, String autoEval, String feedBackManager) {
+		this.id = id;
+		this.realisation = realisation;
+		this.autoEval = autoEval;
+		this.feedBackManager = feedBackManager;
+	}
+
 	public Mission(Long id, String realisation, String autoEval, String feedBackManager, Projet projet, User user) {
 		super();
 		this.id = id;

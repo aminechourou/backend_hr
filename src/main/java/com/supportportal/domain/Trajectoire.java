@@ -107,9 +107,11 @@ public class Trajectoire {
 				+ ", nextRank_visee=" + nextRank_visee + ", nextRank_tech=" + nextRank_tech + ", actions=" + actions
 				+ ", user=" + user + "]";
 	}
-	
-	
-	
-	
-	
+
+	public Trajectoire(Long id, String progression_visee, String progression_tech, String nextJob_visee) {
+		this.id = id;
+		this.progression_visee = progression_visee;
+		this.progression_tech = progression_tech;
+		this.nextJob_visee = nextJob_visee;
+	}
 }

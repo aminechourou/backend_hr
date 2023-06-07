@@ -96,14 +96,46 @@ public class User implements Serializable {
 		this.isNotLocked = isNotLocked;
 		this.manager = manager;
 	}
-       
 
+    public User(Long id,String userId, String firstName, String lastName, String username, String password, String email,
+                String profileImageUrl, Date lastLoginDate, Date lastLoginDateDisplay, Date joinDate, String role,
+                String rank, String job, String offre, String prefOffre, String experience,
+                boolean isActive, boolean isNotLocked) {
+        this.id=id;
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.profileImageUrl = profileImageUrl;
+        this.lastLoginDate = lastLoginDate;
+        this.lastLoginDateDisplay = lastLoginDateDisplay;
+        this.joinDate = joinDate;
+        this.role = role;
+        this.rank = rank;
+        this.job = job;
+        this.offre = offre;
+        this.prefOffre = prefOffre;
+        this.experience = experience;
+        this.isActive = isActive;
+        this.isNotLocked = isNotLocked;
+    }
 
+    public User(Long id, String userId, String firstName, String lastName, String username, String password, String email) {
+        this.id = id;
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 
-	public User(String userId, String firstName, String lastName, String username, String password, String email,
-			String profileImageUrl, Date lastLoginDate, Date lastLoginDateDisplay, Date joinDate, String role,
-			String rank, String job, String offre, String prefOffre, String experience, String[] authorities,
-			boolean isActive, boolean isNotLocked, User manager) {
+    public User(String userId, String firstName, String lastName, String username, String password, String email,
+                String profileImageUrl, Date lastLoginDate, Date lastLoginDateDisplay, Date joinDate, String role,
+                String rank, String job, String offre, String prefOffre, String experience, String[] authorities,
+                boolean isActive, boolean isNotLocked, User manager) {
 		
 		this.userId = userId;
 		this.firstName = firstName;

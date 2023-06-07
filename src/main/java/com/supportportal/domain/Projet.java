@@ -7,102 +7,95 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
-@Table(name = "mission")
-public class Mission {
+@Table(name = "projet")
+public class Projet {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     @JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	Long id;
-	String realisation;
-	String autoEval;
-	String feedBackManager;
-	String etat ="on doing";
+	String titre;
+	String description;
+	String dure;
+	String etat;
+	String client;
 	@ManyToOne(optional = true)
-    @JoinColumn(name = "projet",nullable = true,referencedColumnName = "id")
-	Projet projet;
-	@OneToOne
-    @JoinColumn(name = "user_name",referencedColumnName = "username")
-    private User user;
+    @JoinColumn(name = "chef",nullable = true,referencedColumnName = "id")
+    private User chef;
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getRealisation() {
-		return realisation;
+	public String getDescription() {
+		return description;
 	}
-	public void setRealisation(String realisation) {
-		this.realisation = realisation;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	public String getAutoEval() {
-		if(this.autoEval == null) {return "not submitted";}
-		else return autoEval;
+	public String getDure() {
+		return dure;
 	}
-	public void setAutoEval(String autoEval) {
-		this.autoEval = autoEval;
+	public void setDure(String dure) {
+		this.dure = dure;
 	}
-	public String getFeedBackManager() {
-		if(this.feedBackManager == null) {return "not submitted";}
-		else return feedBackManager;
-	}
-	public void setFeedBackManager(String feedBackManager) {
-		this.feedBackManager = feedBackManager;
-	}
-	public Projet getProjet() {
-		return projet;
-	}
-	public void setProjet(Projet projet) {
-		this.projet = projet;
-	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
 	public String getEtat() {
 		return etat;
 	}
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
-
-	public Mission(Long id, String realisation, String autoEval, String feedBackManager) {
-		this.id = id;
-		this.realisation = realisation;
-		this.autoEval = autoEval;
-		this.feedBackManager = feedBackManager;
+	public String getClient() {
+		return client;
 	}
-
-	public Mission(Long id, String realisation, String autoEval, String feedBackManager, Projet projet, User user) {
-		super();
+	public void setClient(String client) {
+		this.client = client;
+	}
+	public User getChef() {
+		return chef;
+	}
+	public void setChef(User chef) {
+		this.chef = chef;
+	}
+	public String getTitre() {
+		return titre;
+	}
+	public void setTitre(String titre) {
+		this.titre = titre;
+	}
+	public Projet(Long id, String titre, String description, String dure, String etat, String client, User chef) {
+		
 		this.id = id;
-		this.realisation = realisation;
-		this.autoEval = autoEval;
-		this.feedBackManager = feedBackManager;
-		this.projet = projet;
-		this.user = user;
+		this.titre = titre;
+		this.description = description;
+		this.dure = dure;
+		this.etat = etat;
+		this.client = client;
+		this.chef = chef;
+	}
+	
+	public Projet(String titre, String description, String dure, String etat, String client, User chef) {
+		super();
+		this.titre = titre;
+		this.description = description;
+		this.dure = dure;
+		this.etat = etat;
+		this.client = client;
+		this.chef = chef;
+	}
+	public Projet() {
 	}
 	@Override
 	public String toString() {
-		return "Mission [id=" + id + ", realisation=" + realisation + ", autoEval=" + autoEval + ", feedBackManager="
-				+ feedBackManager + ", etat=" + etat + ", projet=" + projet.toString() + ", user=" + user.toString() + "]";
+		return "Projet [id=" + id + ", titre=" + titre + ", description=" + description + ", dure=" + dure + ", etat="
+				+ etat + ", client=" + client + ", chef=" + chef + "]";
 	}
-	public Mission() {
-		super();
-	}
-	
-	
 	
 	
 	

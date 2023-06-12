@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysqldbgestcomp
+  namespace: backendapp
+  labels:
+    app: mysqldbgestcomp
+    tier: database
+spec:
+  selector: # mysql Pod Should contain same labels
+    matchLabels:
+      app: mysqldbgestcomp
+      tier: database
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels: # Must match 'Service' and 'Deployment' selectors
+        app: mysqldbgestcomp
+        tier: database
+    spec:
+      containers:
+        - image: mysql:5.7 # image from docker-hub
+          args:
+            - "--ignore-db-dir=lost+found" # Workaround for https://github.com/docker-library/mysql/issues/186
+          name: mysqldbgestcomp
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            #- name: MYSQL_USER
+             # value: root
+            - name: MYSQL_DATABASE # Setting Database Name from a 'ConfigMap'
+              value: pfeDataBase
+            - name: MYSQL_URL
+              value: jdbc:mysql://mysqldbgestcomp:3306/pfeDataBase?createDatabaseIfNotExist=true&useSSL=false&useJDBCCompliantTimezoneShift=true&serverTimezone=UTC
+          ports:
+            - containerPort: 3306
+              name: mysqldbgestcomp
+---
+# Define a 'Service' To Expose mysql to Other Services
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysqldbgestcomp  # DNS name
+  namespace: backendapp
+  labels:
+    app: mysqldbgestcomp
+    tier: database
+spec:
+  ports:
+    - port: 3306
+      targetPort: 3306
+  selector:       # mysql Pod Should contain same labels
+    app: mysqldbgestcomp
+    tier: database
+  clusterIP: None  # We Use DNS, Thus ClusterIP is not relevant
+  #type: ClusterIP
